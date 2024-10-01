@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="PyChronos Logo" src="https://github.com/abbott/pychronos/raw/master/logo.png" width="80" />
+  <img alt="PyChronos Logo" src="https://github.com/abbott/pychronos/blob/main/logo.png?raw=true" width="80" />
 </p>
 <h1 align="center">
   PyChronos
