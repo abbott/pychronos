@@ -5,8 +5,8 @@ import threading
 
 from loguru import logger
 
-from chronos.metadata import Task, Session
-from chronos.event import event
+from pychronos.metadata import Task, Session
+from pychronos.event import event
 
 
 def dispatch_task(task_id, task_arguments={}, task_priority="ROUTINE"):
@@ -34,7 +34,7 @@ def execute_task(id):
     task = session.query(Task).get(id)
     logger.debug("Processing task with ID: {}", id)
     task_uid = task.task_id
-    task_module = importlib.import_module("chronos.tasks.{}".format(task_uid))
+    task_module = importlib.import_module("pychronos.tasks.{}".format(task_uid))
     task_id_dict = {"task_id": id}
 
     logger.debug("Starting task with ID: {}", id)

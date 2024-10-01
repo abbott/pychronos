@@ -1,7 +1,7 @@
 import json
 from subprocess import Popen, PIPE
 
-from chronos.script import Script
+from pychronos.script import Script
 
 
 def run(arguments, event):

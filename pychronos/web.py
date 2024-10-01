@@ -29,15 +29,15 @@ from autobahn.twisted.resource import WebSocketResource, WSGIRootResource
 
 
 # First-party dependencies
-import chronos
-import chronos.script
-from chronos.script import get_all_scripts
-from chronos.metadata import Session
-from chronos.metadata import Script as ScriptModel
-from chronos.task import dispatch_task
-from chronos.event import event
-from chronos.util import for_uid
-from chronos.settings import get_setting, set_setting, get_all_settings
+import pychronos
+import pychronos.script
+from pychronos.script import get_all_scripts
+from pychronos.metadata import Session
+from pychronos.metadata import Script as ScriptModel
+from pychronos.task import dispatch_task
+from pychronos.event import event
+from pychronos.util import for_uid
+from pychronos.settings import get_setting, set_setting, get_all_settings
 
 
 # Create Flask app
@@ -55,10 +55,10 @@ api = Api(app)
 
 @app.route("/api/")
 def chronos_info():
-    """Print general information about this Chronos instance."""
+    """Print general information about this PyChronos instance."""
     return jsonify({
-        "name": "Chronos",
-        "version": chronos.__version__
+        "name": "PyChronos",
+        "version": pychronos.__version__
     }), 200
 
 
@@ -68,10 +68,10 @@ class Script(Resource):
     def get(self, uid):
         """Get script metadate."""
         try:
-            script = chronos.script.Script(uid)
+            script = pychronos.script.Script(uid)
 
             return script.to_dict(), 200
-        except chronos.metadata.ScriptDoesNotExist:
+        except pychronos.metadata.ScriptDoesNotExist:
             return null, 404
 
     def post(self, uid):
@@ -90,7 +90,7 @@ class Script(Resource):
         session = Session()
 
         try:
-            script = chronos.script.Script(uid)
+            script = pychronos.script.Script(uid)
             model = session.query(ScriptModel).get(uid)
 
             # Update each field if it exists
@@ -128,7 +128,7 @@ class Script(Resource):
 
     def delete(self, uid):
         """Delete script."""
-        chronos.script.Script(uid).delete()
+        pychronos.script.Script(uid).delete()
 
         return "OK", 200
 
@@ -156,7 +156,7 @@ def scripts():
 
 @app.route("/api/script/<string:uid>/action/<string:action>")
 def action(uid, action):
-    script = chronos.script.Script(uid)
+    script = pychronos.script.Script(uid)
 
     return jsonify({"response": script.action(action)})
 
@@ -164,19 +164,19 @@ def action(uid, action):
 # Install Pip requirements for specific script. This is a slow function.
 @app.route("/api/script/<string:uid>/install_requirements")
 def install_requirements(uid):
-    return jsonify({"response": chronos.script.Script(uid).install_requirements()}), 200
+    return jsonify({"response": pychronos.script.Script(uid).install_requirements()}), 200
 
 
 # Execute specific script and return result.
 @app.route("/api/script/<string:uid>/execute")
 def execute(uid):
-    chronos.script.Script(uid).execute()
+    pychronos.script.Script(uid).execute()
     return jsonify({"response": "OK"}), 200
 
 
-# This part serves the UI from chronos-ui/dist, i.e. it must be built.
+# This part serves the UI from pychronos-ui/dist, i.e. it must be built.
 ui_path = os.path.join(
-    os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "chronos-ui/dist"
+    os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "pychronos-ui/dist"
 )
 
 

@@ -1,4 +1,4 @@
-# chronos-ui
+# pychronos-ui
 
 ## Project setup
 ```

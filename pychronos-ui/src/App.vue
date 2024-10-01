@@ -12,7 +12,7 @@
     <div class="connection-status-overlay" :class="{ hidden: isConnected }">
       <Spinner line-bg-color="transparent" line-fg-color="var(--blue)" />
 
-      <h1>Connecting to Chronos...</h1>
+      <h1>Connecting to PyChronos...</h1>
     </div>
   </div>
 </template>

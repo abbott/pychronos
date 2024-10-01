@@ -1,4 +1,4 @@
-from chronos.trigger import IntervalTrigger, OnStartupTrigger
+from pychronos.trigger import IntervalTrigger, OnStartupTrigger
 
 interval_trigger = IntervalTrigger(
     1000

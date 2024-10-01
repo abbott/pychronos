@@ -39,7 +39,7 @@ class Event:
 
         logger.debug("Triggered event: {}", id)
 
-        from chronos.web import emit_message
+        from pychronos.web import emit_message
         emit_message(id, payload)
         logger.debug("Forwarded event: {} to websocket", id)
 

@@ -24,7 +24,7 @@ import alembic.config
 from loguru import logger
 
 # First-party dependencies
-from chronos.config import CHRONOS
+from pychronos.config import PYCHRONOS
 
 
 # Detect if old database type is still there
@@ -32,7 +32,7 @@ conn = None
 scripts = None
 logs = None
 try:
-    conn = sqlite3.connect(CHRONOS + "/chronos.db")
+    conn = sqlite3.connect(PYCHRONOS + "/pychronos.db")
     cursor = conn.cursor()
     cursor.execute(
         "SELECT name FROM sqlite_master WHERE type='table' AND name='setting'"
@@ -51,12 +51,12 @@ try:
         logger.debug("Conversion step 1 finished: gathered data")
 
         logger.debug("Backing up database and removing...")
-        database_path = Path(CHRONOS + "/chronos.db")
+        database_path = Path(PYCHRONOS + "/pychronos.db")
         database_path.rename(
-            CHRONOS
+            PYCHRONOS
             + "/"
             + str(int(datetime.datetime.utcnow().timestamp() * 1000))
-            + "-old-chronos.db"
+            + "-old-pychronos.db"
         )
         logger.debug("Database backed up, creating new format...")
 
@@ -67,8 +67,8 @@ finally:
         conn.close()
 
 
-logger.debug("Connecting to local Chronos database")
-db = create_engine("sqlite:///" + CHRONOS + "/chronos.db", echo=False, connect_args={'check_same_thread':False})
+logger.debug("Connecting to local PyChronos database")
+db = create_engine("sqlite:///" + PYCHRONOS + "/pychronos.db", echo=False, connect_args={'check_same_thread':False})
 meta = MetaData()
 Session = scoped_session(sessionmaker(bind=db))
 Base = declarative_base(metadata=meta)

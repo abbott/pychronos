@@ -2,8 +2,8 @@ import shutil
 import json
 import os
 
-from chronos.script import Script
-from chronos.metadata import Session, Log
+from pychronos.script import Script
+from pychronos.metadata import Session, Log
 
 
 def run(arguments, event):

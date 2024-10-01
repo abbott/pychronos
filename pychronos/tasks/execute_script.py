@@ -4,8 +4,8 @@ from subprocess import PIPE, Popen
 
 import maya
 
-from chronos.script import Script
-from chronos.metadata import Log, Session
+from pychronos.script import Script
+from pychronos.metadata import Log, Session
 
 
 def run(arguments, event):

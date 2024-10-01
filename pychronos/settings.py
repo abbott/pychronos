@@ -1,6 +1,6 @@
 from loguru import logger
 
-from chronos.metadata import Setting, Session
+from pychronos.metadata import Setting, Session
 
 
 def get_setting(key):

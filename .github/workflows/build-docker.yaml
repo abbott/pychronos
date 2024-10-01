@@ -1,0 +1,47 @@
+name: Publish to Docker
+
+on: workflow_dispatch
+
+env:
+  LATEST_TAG: abb0tt/pychronos:latest
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to Docker
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and export to Docker for testing
+        uses: docker/build-push-action@v6
+        with:
+          load: true
+          tags: ${{ env.TEST_TAG }}
+
+      - name: Test the image
+        run: |
+          docker run --rm ${{ env.TEST_TAG }}
+
+      - name: Build and push multi-platform image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          #platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ${{ env.LATEST_TAG }}
+      # -
+      #   name: Update repo description
+      #   uses: peter-evans/dockerhub-description@v4 # v4.0.0
+      #   with:
+      #     username: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+      #     repository: ${{ env.LATEST_TAG }}

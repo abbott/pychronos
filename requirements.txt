@@ -22,7 +22,7 @@ Flask-RESTful==0.3.8
 Flask-SocketIO==4.3.0
 gevent==20.5.0
 gevent-websocket==0.10.1
-greenlet==0.4.15
+greenlet==0.4.17
 humanize==2.4.0
 hyperlink==19.0.0
 idna==2.9

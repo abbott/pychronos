@@ -1,12 +1,12 @@
 import json
 import os
 
-from chronos.script import Script
-from chronos.config import CHRONOS
-from chronos.util import generate_uid, for_uid
-from chronos.venv import *
-from chronos.metadata import Session
-from chronos.metadata import Script as ScriptModel
+from pychronos.script import Script
+from pychronos.config import PYCHRONOS
+from pychronos.util import generate_uid, for_uid
+from pychronos.venv import *
+from pychronos.metadata import Session
+from pychronos.metadata import Script as ScriptModel
 
 
 def run(arguments, event):
@@ -24,11 +24,11 @@ def run(arguments, event):
         uid = for_uid(name)
 
     # Check that the scripts folder exists (important for first-time users)
-    if not os.path.isdir(CHRONOS + os.path.sep + "scripts"):
-        os.mkdir(CHRONOS + os.path.sep + "scripts")
+    if not os.path.isdir(PYCHRONOS + os.path.sep + "scripts"):
+        os.mkdir(PYCHRONOS + os.path.sep + "scripts")
 
     # Find script path given UID
-    path = CHRONOS + os.path.sep + "scripts" + os.path.sep + uid
+    path = PYCHRONOS + os.path.sep + "scripts" + os.path.sep + uid
 
     # Create folder, if it doesn't already exist
     if not os.path.isdir(path):

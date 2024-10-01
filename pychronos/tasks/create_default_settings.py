@@ -1,4 +1,4 @@
-from chronos.settings import get_setting, set_setting
+from pychronos.settings import get_setting, set_setting
 
 
 def run(arguments, event):

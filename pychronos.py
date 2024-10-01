@@ -9,32 +9,32 @@ import os
 from loguru import logger
 
 # Configure logger
-from chronos.config import CHRONOS
+from pychronos.config import PYCHRONOS
 logger.remove()
-logger.add(CHRONOS + "/logs/chronos.log", rotation="00:00", level="DEBUG")
+logger.add(PYCHRONOS + "/logs/pychronos.log", rotation="00:00", level="DEBUG")
 
 if os.getenv("CHRONOS_DEBUG") == "true":
     logger.add(sys.stderr, level="DEBUG")
-    logger.debug("Chronos debug mode enabled")
+    logger.debug("PyChronos debug mode enabled")
 else:
     logger.add(sys.stderr, level="INFO")
 
 # First-party dependencies
-import chronos
+import pychronos
 
-# Print Chronos version
-logger.info("Starting Chronos: {}", chronos.__version__)
+# Print PyChronos version
+logger.info("Starting PyChronos: {}", pychronos.__version__)
 
-from chronos.web import start_server
-from chronos.task import dispatch_task
-from chronos.bus import interval_trigger
-from chronos.event import event
-from chronos.runtime import (
+from pychronos.web import start_server
+from pychronos.task import dispatch_task
+from pychronos.bus import interval_trigger
+from pychronos.event import event
+from pychronos.runtime import (
     evalaute_script_interval_triggers,
     evalaute_script_cron_triggers,
     prune_script_logs,
 )
-from chronos.metadata import migrate
+from pychronos.metadata import migrate
 
 migrate()
 

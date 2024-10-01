@@ -8,12 +8,12 @@ from loguru import logger
 import maya
 
 # First-party dependencies
-from chronos.metadata import Session, Log
-from chronos.metadata import Script as ScriptModel
-from chronos.config import *
-from chronos.venv import *
-from chronos.event import event
-from chronos.task import dispatch_task
+from pychronos.metadata import Session, Log
+from pychronos.metadata import Script as ScriptModel
+from pychronos.config import *
+from pychronos.venv import *
+from pychronos.event import event
+from pychronos.task import dispatch_task
 
 
 class Script:
@@ -41,7 +41,7 @@ class Script:
         self.enabled = self.db.enabled
 
         # Get script folder
-        self.folder = CHRONOS + os.path.sep + "scripts" + os.path.sep + self.uid
+        self.folder = PYCHRONOS + os.path.sep + "scripts" + os.path.sep + self.uid
 
         # Get path of script
         self.path = self.folder + os.path.sep + self.uid + ".py"

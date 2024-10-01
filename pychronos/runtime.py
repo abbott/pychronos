@@ -8,13 +8,13 @@ import cronex
 from loguru import logger
 
 # First-party dependencies
-from chronos.util import *
-from chronos.venv import *
-from chronos.metadata import Session
-from chronos.metadata import Script as ScriptModel
-from chronos.script import Script
-from chronos.task import dispatch_task
-from chronos.bus import interval_trigger
+from pychronos.util import *
+from pychronos.venv import *
+from pychronos.metadata import Session
+from pychronos.metadata import Script as ScriptModel
+from pychronos.script import Script
+from pychronos.task import dispatch_task
+from pychronos.bus import interval_trigger
 
 session = Session()
 

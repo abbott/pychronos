@@ -6,12 +6,12 @@ import os
 
 
 # First-party depedencies
-from chronos.config import *
+from pychronos.config import *
 
 
 def get_venv_folder(uid):
     """Returns location of virtualenv folder given script UID"""
-    return CHRONOS + os.path.sep + "scripts" + os.path.sep + uid + os.path.sep + ".venv"
+    return PYCHRONOS + os.path.sep + "scripts" + os.path.sep + uid + os.path.sep + ".venv"
 
 
 def create_env(uid):

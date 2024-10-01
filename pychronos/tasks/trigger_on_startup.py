@@ -1,5 +1,5 @@
-from chronos.script import get_all_scripts
-from chronos.task import dispatch_task
+from pychronos.script import get_all_scripts
+from pychronos.task import dispatch_task
 
 
 def run(arguments, event):

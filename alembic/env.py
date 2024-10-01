@@ -15,8 +15,8 @@ fileConfig(config.config_file_name)
 
 # add your model's MetaData object here
 # for 'autogenerate' support
-from chronos.config import CHRONOS
-from chronos.metadata import meta
+from pychronos.config import PYCHRONOS
+from pychronos.metadata import meta
 
 target_metadata = meta
 # target_metadata = None
@@ -26,7 +26,7 @@ target_metadata = meta
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-database_url = "sqlite:///" + CHRONOS + "/chronos.db"
+database_url = "sqlite:///" + PYCHRONOS + "/pychronos.db"
 config.set_main_option("sqlalchemy.url", database_url)
 
 

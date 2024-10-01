@@ -1,6 +1,6 @@
-from chronos.metadata import Script as ScriptModel
-from chronos.metadata import Session
-from chronos.script import Script
+from pychronos.metadata import Script as ScriptModel
+from pychronos.metadata import Session
+from pychronos.script import Script
 
 
 def run(arguments, event):

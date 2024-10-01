@@ -9,5 +9,5 @@ fi
 echo $TAG
 
 echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-docker build . -t simsemand/chronos:$TAG
-docker push simsemand/chronos:$TAG
+docker build . -t abb0tt/pychronos:$TAG
+docker push abb0tt/pychronos:$TAG
